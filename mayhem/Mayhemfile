@@ -1,4 +1,4 @@
-project: unculr
+project: uncurl
 
 target: fuzz-uncurl
 
