@@ -11,14 +11,14 @@ def remove_chars(str, chars):
     for char in chars:
         fs = fs.replace(char, '')
 
-    print("final str: " + fs)
     return str
 
 @atheris.instrument_func
 def test_input(input_data):
-    # query_str = ""
+    query_str = ""
     
     # ensure errors are not from just missing args
+
     fdp = atheris.FuzzedDataProvider(input_data)
     data = fdp.ConsumeString(4096)
     replace = ['-', '"', "'", " ", "\n", "`"]
@@ -30,20 +30,13 @@ def test_input(input_data):
     if b:
         pass
     else:
-        # try:
-        query_str = "curl https://" + data
+        query_str = "curl \'https://" + data + "\'"
         uncurl.parse(query_str)
-        # except SystemExit:
-        #     print(data)
-
-    return
 
 def main():
-    try:
-        atheris.Setup(sys.argv, test_input)
-        atheris.Fuzz()
-    except:
-        pass
-
+    
+    atheris.Setup(sys.argv, test_input)
+    atheris.Fuzz()
+    
 if __name__ == "__main__":
     main()
