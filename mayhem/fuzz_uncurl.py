@@ -14,7 +14,7 @@ def remove_chars(str, chars):
     return str
 
 @atheris.instrument_func
-def test_input(input_data):
+def fuzzUncurlParse(input_data):
     query_str = ""
     
     # ensure errors are not from just missing args
@@ -35,7 +35,7 @@ def test_input(input_data):
 
 def main():
     
-    atheris.Setup(sys.argv, test_input)
+    atheris.Setup(sys.argv, fuzzUncurlParse)
     atheris.Fuzz()
     
 if __name__ == "__main__":
