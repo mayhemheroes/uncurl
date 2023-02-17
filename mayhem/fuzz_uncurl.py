@@ -6,12 +6,12 @@ import sys
 with atheris.instrument_imports():
     import uncurl
 
-def remove_chars(str, chars):
-    fs = str
-    for char in chars:
-        fs = fs.replace(char, '')
+# def remove_chars(str, chars):
+#     fs = str
+#     for char in chars:
+#         fs = fs.replace(char, '')
 
-    return str
+#     return str
 
 @atheris.instrument_func
 def fuzzUncurlParse(input_data):
@@ -20,7 +20,7 @@ def fuzzUncurlParse(input_data):
     # ensure errors are not from just missing args
 
     fdp = atheris.FuzzedDataProvider(input_data)
-    data = fdp.ConsumeString(4096)
+    data = fdp.ConsumeString()
     replace = ['-', '"', "'", " ", "\n", "`"]
     b = False
     for c in replace:
