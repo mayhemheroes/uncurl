@@ -2,7 +2,7 @@ project: uncurl
 
 target: fuzz-uncurl
 
-image: ghcr.io/ethanm27/uncurl:master
+image: ghcr.io/ethanm27/uncurl:latest
 
 cmds:
     - cmd: /src/mayhem/fuzz_uncurl.py

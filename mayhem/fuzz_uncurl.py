@@ -20,7 +20,7 @@ def fuzzUncurlParse(input_data):
     # ensure errors are not from just missing args
 
     fdp = atheris.FuzzedDataProvider(input_data)
-    data = fdp.ConsumeString()
+    data = fdp.ConsumeString(fdp.remaining_bytes())
     replace = ['-', '"', "'", " ", "\n", "`"]
     b = False
     for c in replace:
